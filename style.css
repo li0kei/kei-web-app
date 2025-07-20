@@ -1,0 +1,488 @@
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('assets/fonts/PressStart2P-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #0d0d0d, #1a0033);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  overflow-x: hidden;
+
+
+  /* Tengah semua benda */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0 ;
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#mainApp {
+  display: flex;                /* Use flexbox for centering */
+  flex-direction: column;      /* Stack children vertically */
+  justify-content: center;      /* Center vertically */
+  align-items: center;          /* Center horizontally */
+  height: 100vh;               /* Full viewport height */
+  text-align: center;          /* Center text */
+}
+
+.logo {
+  font-size: 40px;
+  margin-bottom: 30px;
+  animation: bounce 1.7s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.welcome-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 40px;
+  color: hotpink;
+  text-align: center;
+  margin-top: 4%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 0.15em solid hotpink;
+  animation: typing 3.5s steps(32, end), blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 28ch }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.logo, .welcome-text, button {
+  text-shadow: 0 0 5px #fff, 0 0 10px hotpink, 0 0 20px hotpink;
+}
+
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensure full viewport height */
+}
+
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Input container untuk align input + button + search */
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+input[type="text"] {
+  width: 60%;
+  padding: 10px;
+  font-size: 10px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  font-family: 'Press Start 2P', cursive;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #ff69b4;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff69b4;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff69b4;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: rgba(255, 105, 180, 0.1);
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px dashed #ff69b4;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+}
+
+li.completed {
+  border: 2px solid lightgreen !important;
+  background-color: #eaffea;
+  color: #333;
+}
+
+li button {
+  background-color: hotpink;
+  color: rgb(179, 4, 4);
+  border: none;
+  padding: 7.5px 6px;
+  margin-left: 5px;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 #000;
+}
+
+li button:hover {
+  background-color: #3f8e9f;
+  transform: scale(1.05);
+}
+
+#taskList li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: #111;
+  color: hotpink;
+  margin-bottom: 8px;
+  border: 1px solid rgb(101, 62, 81);
+  border-radius: 6px;
+}
+
+#taskList li {
+  box-shadow: 0 0 8px hotpink, 0 0 15px #ff00ff;
+}
+
+
+/* Bila task completed */
+li.completed {
+  background-color: #111; /* warna asal sebelum fade */
+  color: #dcb3b3;
+  border: 2px solid lightgreen;
+  animation: fadeGreen 1.0s forwards; /* animate sekali je */
+}
+
+/* Animasi fade pelan-pelan ke hijau */
+@keyframes fadeGreen {
+  0% {
+    background-color: #3d3039;
+    color: rgba(194, 119, 156, 0.786);
+  }
+  100% {
+    background-color: #eaffea;
+    color: darkgreen;
+  }
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgb(194, 65, 143);
+  border-radius: 50%;
+  animation: sparkleAnim 0.6s linear forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes sparkleAnim {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translateY(-30px);
+  }
+}
+
+
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: rgb(205, 191, 198);
+  cursor: pointer;
+}
+
+button.delete {
+  background-color: hotpink;
+  color: rgb(179, 4, 4);
+}
+
+button.done-delete {
+  background-color: lightgreen;
+  color: darkgreen;
+}
+
+
+#galaxyBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.6; /* boleh adjust gelap/cerah */
+}
+
+.quote-text {
+  font-family: 'Press Start 2P', cursive;
+  color: #e675d3;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 10px;
+  animation: fadeIn 1.5s ease-in-out;
+  animation: bounce 1.7s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 105, 180, 0.8);
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px hotpink;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff69b4;
+}
+
+
+/* ✅ Sidebar Folder & List */
+#sidebar {
+  width: 250px;
+  background: rgba(13, 13, 13, 0.6); /* ✅ Transparent hitam */
+  backdrop-filter: blur(8px);        /* ✅ Glass blur effect */
+  -webkit-backdrop-filter: blur(8px);
+  color: hotpink;
+  padding: 15px;
+  border: 1px solid rgba(255, 105, 180, 0.4); /* border lembut pink */
+  border-radius: 10px 0 0 10px;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 0 0 8px hotpink, 0 0 15px #ff00ff;
+  min-width: 150px;
+  max-width: 500px;
+  overflow: auto;
+}
+
+/* ✅ Drag Handle */
+#dragHandle {
+  width: 5px;
+  background: hotpink;
+  cursor: ew-resize;
+  box-shadow: 0 0 5px hotpink, 0 0 10px #ff00ff;
+  transition: background 0.2s;
+}
+
+#dragHandle:hover {
+  background: #ff00ff;
+}
+
+
+#sidebar h3 {
+  font-size: 12px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  text-shadow: 0 0 5px #fff, 0 0 10px hotpink, 0 0 20px hotpink;
+}
+
+#sidebar button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  background: #ff69b4;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-size: 10px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 0 0 5px hotpink, 0 0 10px #ff00ff;
+}
+
+#sidebar button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px hotpink, 0 0 20px #ff00ff;
+}
+
+#folderList {
+  list-style: none;
+  padding-left: 0;
+  font-size: 9px;
+  margin-top: 10px;
+}
+
+#folderList li {
+  background: rgba(0, 0, 0, 0.6); /* ✅ solid gelap supaya text jelas */
+  color: hotpink;
+  padding: 8px;
+  margin: 6px 0;
+  border: 1px solid rgba(255, 105, 180, 0.4);
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+  transition: all 0.2s ease;
+}
+
+#folderList li:hover {
+  background: rgba(255, 105, 180, 0.2);
+  border: 1px solid hotpink;
+  color: #fff; /* ✅ hover jadi putih supaya jelas */
+  box-shadow: 0 0 10px hotpink, 0 0 20px #ff00ff;
+  transform: scale(1.03);
+}
+
+#folderList li.active {
+  background: rgba(255, 105, 180, 0.3);
+  border: 1px solid #ff00ff;
+  color: #fff;
+  box-shadow: 0 0 12px hotpink, 0 0 25px #ff00ff;
+}
+
+#questTrackerPanel {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #1c1c1c;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 0 10px hotpink;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.modal-content input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#questTrackerPanel {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.main-app {
+  width: 100%;
+}
+
+.app-container {
+  display: flex;
+  width: 100%;
+  gap: 0;
+}
+
+#questTrackerPanel {
+  flex: 1;
+}
+
+.icon-btn {
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.task-status {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.overdue {
+  color: red;
+}
+
+.due-today {
+  color: orange;
+}
+
+.due-tomorrow {
+  color: green;
+}
+

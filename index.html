@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quest Tracker 👾</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<video autoplay muted loop id="galaxyBackground">
+  <source src="assets/video/galaxy.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<audio id="bgMusic" loop>
+  <source src="assets/sounds/golden.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicToggle" class="music-btn">🔊</button>
+
+
+<!-- ✅ WELCOME SCREEN -->
+<div class="center-screen">
+  <h1 class="welcome-text">Quest Tracker</h1>
+</div>
+
+<!-- ✅ MAIN APP (Panel Kiri + Kanan) -->
+<div id="mainApp" style="display: none; width:100%;"> 
+  <div class="app-container" style="display: flex; gap: 0; width:100%;">
+
+    <!-- ✅ PANEL KIRI -->
+    <div id="sidebar">
+      <h3>📁 Folders & Lists</h3>
+      <button onclick="createFolder()">+ Create Folder</button>
+      <button onclick="createList(null)">+ Create List (Global)</button>
+      <ul id="folderList"></ul>
+    </div>
+
+    <!-- ✅ DRAG HANDLE -->
+    <div id="dragHandle"></div>
+
+    <!-- ✅ PANEL KANAN -->
+    <div id="questTrackerPanel" style="flex: 1;">
+      <h1 id="questTitle" class="logo">👾 Quest Tracker</h1>
+      <p id="mainQuote" class="quote-text"></p>
+
+      <div class="input-container">
+        <input type="text" id="taskInput" placeholder="Enter your quest..." />
+        <input type="date" id="taskDate" />
+        <input type="text" id="taskSubject" placeholder="Subject (Optional)" />
+        <input type="url" id="taskLink" placeholder="Paste a link (optional)">
+        <button id="addTaskBtn">ADD TASK</button>
+      </div>
+
+      <ul id="taskList"></ul>
+
+      
+
+      <div class="stats">
+        <p>Total: <span id="totalCount">0</span></p>
+        <p>Active: <span id="activeCount">0</span></p>
+        <p>Completed: <span id="completedCount">0</span></p>
+      </div>
+      
+    <!-- 🌟 Modal Create Folder -->
+<div id="folderModal" class="modal">
+  <div class="modal-content">
+    <h3>Name your folder</h3>
+    <input type="text" id="folderNameInput" placeholder="Enter folder name..." />
+    <div class="modal-buttons">
+      <button onclick="confirmCreateFolder()">Create</button>
+      <button onclick="closeFolderModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  setTimeout(() => {
+    document.querySelector('.center-screen').style.display = 'none';
+    document.getElementById('mainApp').style.display = 'flex';
+  }, 3000);
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
