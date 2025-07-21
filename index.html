@@ -19,7 +19,21 @@
   <source src="assets/sounds/golden.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicToggle" class="music-btn">🔊</button>
+
+<!-- Music and Mute Buttons -->
+<div id="musicControls">
+  <button id="musicToggle" class="circle-btn">🔇</button>
+  <button id="musicPicker" class="circle-btn">🎵</button>
+
+  <div id="bubbleSongs" class="hidden">
+    <button class="bubble-song" data-src="assets/sounds/piano1.mp3">🎼</button>
+    <button class="bubble-song" data-src="assets/sounds/piano2.mp3">🎸</button>
+    <button class="bubble-song" data-src="assets/sounds/golden.mp3">🎹</button>
+  </div>
+
+  <audio id="bgMusic" autoplay></audio>
+</div>
+
 
 
 <!-- ✅ WELCOME SCREEN -->
@@ -64,6 +78,8 @@
         <p>Active: <span id="activeCount">0</span></p>
         <p>Completed: <span id="completedCount">0</span></p>
       </div>
+
+      
       
     <!-- 🌟 Modal Create Folder -->
 <div id="folderModal" class="modal">

@@ -1,8 +1,6 @@
 // DOM ELEMENTS
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
-const bgMusic = document.getElementById("bgMusic");
-const musicToggle = document.getElementById("musicToggle");
 const sidebar = document.getElementById("sidebar");
 const dragHandle = document.getElementById("dragHandle");
 const folderList = document.getElementById("folderList");
@@ -11,6 +9,11 @@ const taskSubject = document.getElementById("taskSubject");
 const taskLink = document.getElementById("taskLink");
 const taskList = document.getElementById("taskList");
 const questTitle = document.getElementById("questTitle");
+
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+const musicPicker = document.getElementById("musicPicker");
+const bubbleSongs = document.getElementById("bubbleSongs");
 
 // GLOBAL VARIABLES
 let isPlaying = false;
@@ -23,12 +26,29 @@ let currentFolder = null;
 renderFolders();
 renderTasks();
 
-// MUSIC TOGGLE
+// Mute/unmute
 musicToggle.addEventListener("click", () => {
-  isPlaying = !isPlaying;
-  isPlaying ? bgMusic.play() : bgMusic.pause();
-  musicToggle.textContent = isPlaying ? "🔊" : "🔇";
+  bgMusic.muted = !bgMusic.muted;
+  musicToggle.textContent = bgMusic.muted ? "🔇" : "🔊";
 });
+
+// Toggle song menu
+musicPicker.addEventListener("click", () => {
+  bubbleSongs.classList.toggle("hidden");
+});
+
+// Select song
+document.querySelectorAll(".bubble-song").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const src = btn.getAttribute("data-src");
+    bgMusic.src = src;
+    bgMusic.play();
+    bgMusic.muted = false;
+    musicToggle.textContent = "🔊";
+    bubbleSongs.classList.add("hidden");
+  });
+});
+
 
 // ENTER KEY TO ADD TASK
 taskInput.addEventListener("keydown", (e) => {
