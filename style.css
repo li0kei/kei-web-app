@@ -486,3 +486,47 @@ button.done-delete {
   color: green;
 }
 
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .task {
+    font-size: 12px;
+  }
+
+  button, input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .task-list {
+    max-height: unset;
+  }
+
+  /* Contoh tukar layout */
+  .task-controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.task-title {
+  font-size: 1rem; /* instead of px */
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
